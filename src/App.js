@@ -13,12 +13,11 @@ class App extends Component {
       const { data: posts } = await http.get(config.apiEndpoint);
 
       console.log(posts);
+      this.setState({ posts });
     } catch (ex) {
       console.log("catch called");
       alert("can't get data from server");
     }
-
-    // this.setState({ posts });
   }
 
   handleAdd = async () => {
@@ -26,11 +25,11 @@ class App extends Component {
 
     const { data: post } = await http.post(config.apiEndpoint, obj);
 
-    // const posts = [post, ...this.state.posts];
+    const posts = [post, ...this.state.posts];
 
     console.log(post);
 
-    // this.setState({ posts });
+    this.setState({ posts });
   };
 
   handleUpdate = async (post) => {
